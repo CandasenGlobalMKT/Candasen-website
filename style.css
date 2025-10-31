@@ -301,10 +301,10 @@ section {
     /* 🔑 KEY CHANGE: Image should only occupy 50% of the section width */
     width: 50%;
     transform-origin: bottom left;
-    animation: slideInLeft 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation: slideInLeft 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     /* 🔑 Ensure the initial state of the clip-path is the default rectangle (no cut) */
     /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); */
-    clip-path: polygon(0% 0%, 50% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 0% 100%);
     /* clip-path: polygon(0% 0%, 50% 0%, 100% 100%, 0% 100%); */
 }
 
@@ -315,10 +315,10 @@ section {
     /* 🔑 KEY CHANGE: Image should only occupy 50% of the section width */
     width: 50%;
     transform-origin: top right;
-    animation: slideInRight 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation: slideInRight 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     /* 🔑 Ensure the initial state of the clip-path is the default rectangle (no cut) */
     /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); */
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 10% 100%);
 }
 
 @keyframes slideInLeft {
@@ -330,7 +330,7 @@ section {
         transform: translateX(0%) skewX(0deg);
         /* 🔑 KEY CHANGE: Apply a clip-path to cut the right edge at 45 degrees. 
            (x1 y1, x2 y2, x3 y3, x4 y4) */
-        clip-path: polygon(0% 0%, 50% 0%, 100% 100%, 0% 100%);
+        clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 0% 100%);
         /* Note: The browser will try to transition this, which might look jagged. 
            We'll improve this with an overlay below. */
     }
@@ -344,21 +344,18 @@ section {
     100% {
         transform: translateX(0%) skewX(0deg);
         /* 🔑 KEY CHANGE: Apply a clip-path to cut the left edge at 45 degrees. */
-        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 10% 100%);
     }
 }
 
 
 
-
-
-
 /* Animation on page load (or when hero-section becomes visible) */
 .hero-section:not(.animated) .hero-bg-left {
-    transform: translateX(0) skewX(0); /* Final position for left image */
+    transform: translateX(0) skewX(0deg); /* Final position for left image */
 }
 .hero-section:not(.animated) .hero-bg-right {
-    transform: translateX(0) skewX(0); /* Final position for right image */
+    transform: translateX(0) skewX(0deg); /* Final position for right image */
 }
 
 /* This is the state AFTER animation.
@@ -371,8 +368,6 @@ section {
 .hero-section:hover .hero-bg-right { /* Just for demonstration, hover to see final state */
     transform: translateX(0%) skewX(0deg);
 }
-
-
 
 
 /* Responsive adjustments for the hero section */
