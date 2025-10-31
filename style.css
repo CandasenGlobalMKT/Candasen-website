@@ -1,0 +1,699 @@
+/* style.css */
+
+/* --- Color Variables --- */
+:root {
+    --primary-color: #062b4b;
+    --secondary-color: #4e6e8e;
+    --tertiary-color: #a0a5aa;
+    --text-dark: #1b1b1b;
+    --text-light: #ffffff;
+    --accent-color: #8b2c2c;
+    /* Define the size of the margin *around* the dot for precise centering */
+    --dot-spacing: 20px;
+}
+
+/* --- Base & Typography --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* 🔑 ADD: Apply Rubik as the primary font with a sans-serif fallback */
+    font-family: 'Rubik', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--text-light);
+}
+
+/* body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--text-light);
+} */
+
+h1, h2, h3, h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Utility Classes --- */
+.text-center { text-align: center; }
+.bg-primary { background-color: var(--primary-color); color: var(--text-light); }
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: var(--text-light) !important;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+}
+
+/* --- Header & Navigation --- */
+.top-bar {
+    background-color: var(--tertiary-color);
+    color: var(--text-dark);
+    padding: 10px 0;
+    font-size: 0.9em;
+}
+
+.top-bar .contact-info {
+    display: flex;
+    justify-content: flex-end;
+}
+
+header {
+    background-color: var(--text-light);
+    padding: 10px 0; /* Adjusted padding */
+    border-bottom: 1px solid #eee;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* UPDATED: Logo Image Styling for better size control */
+.logo a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.logo img {
+    max-height: 80px; /* Slightly reduced height for compactness */
+    max-width: auto; /* Constrain the logo's overall width */
+    width: auto;
+    display: block;
+}
+
+header {
+    padding: 2px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    color: var(--primary-color);
+    font-weight: 600;
+    padding: 5px 0;
+    position: relative;
+}
+
+.nav-links a.active {
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.inline-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    /* Apply font globally to the list for cleaner inheritance */
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700; 
+    color: var(--primary-color, #062b4b);
+}
+
+.inline-list li {
+    /* Makes the list items display inline (side-by-side) */
+    display: inline-flex;
+    /* Adds some horizontal spacing between the items */
+    margin: 0 0px;
+    /* Styles for the text (optional) */
+    font-family: 'Rubik', sans-serif;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--text-light);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Add shadow for readability */
+}
+
+/* Selector to add the separator to all items EXCEPT the last one */
+.inline-list li:not(:last-child)::after {
+    content: "\2022"; /* • */
+    /* Position the separator slightly to the right of the text */
+    margin: 0 var(--dot-spacing); /* or use var var on both
+    /* Control the size of the separator (optional) */
+    font-size: 1.5em; /* Makes the circle bigger */
+    /* Ensure the separator stays on the same line */
+    /* Color of the separator (optional) */
+    color: var(--tertiary-color);
+}
+
+/* Mobile menu setup */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    padding: 40px 0;
+    margin-top: 40px;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: var(--text-light);
+}
+
+footer h4 {
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+}
+
+/* --- Main Content Sections --- */
+section {
+    padding: 40px 0;
+}
+
+.hero-section {
+    background: var(--primary-color) url('placeholder-hero-image.jpg') no-repeat center center/cover;
+    color: var(--text-light);
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero-section h1 {
+    color: var(--text-light);
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.hero-section {
+    background: var(--primary-color); /* Primary color as fallback/base */
+    color: var(--text-light);
+    text-align: center;
+    padding: 100px 0;
+    position: relative; /* Crucial for positioning background divs */
+    overflow: hidden; /* Hide parts of images outside the section */
+    height: 450px; /* Give it a fixed height or min-height for consistent display */
+    display: flex; /* Use flexbox to center content vertically */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+}
+
+/* Ensure the container content is above the moving backgrounds */
+.hero-section .container {
+    position: relative;
+    z-index: 2; /* Make sure text and button are on top */
+}
+
+.hero-section h1 {
+    color: var(--text-light);
+    font-size: 3em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Add shadow for readability */
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Add shadow for readability */
+}
+
+/* Styles for the moving background images */
+.hero-bg-left,
+.hero-bg-right {
+    position: absolute;
+    top: 0;
+    /* width: 100%; */
+    height: 100%;
+    background-size: cover;
+    /* background-position: center; */
+    z-index: 1; /* Place them behind the text */
+    /* Smooth animation */
+    /* transition: transform 1.5s ease-out;  */
+}
+
+.hero-bg-left {
+    background-image: url('figures/container-ship.png');
+    background-position: right center;
+    left: 0;
+    /* 🔑 KEY CHANGE: Image should only occupy 50% of the section width */
+    width: 50%;
+    transform-origin: bottom left;
+    animation: slideInLeft 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    /* 🔑 Ensure the initial state of the clip-path is the default rectangle (no cut) */
+    /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); */
+    clip-path: polygon(0% 0%, 50% 0%, 100% 100%, 0% 100%);
+    /* clip-path: polygon(0% 0%, 50% 0%, 100% 100%, 0% 100%); */
+}
+
+.hero-bg-right {
+    background-image: url('figures/executive-meeting.png');
+    background-position: left center;
+    right: 0;
+    /* 🔑 KEY CHANGE: Image should only occupy 50% of the section width */
+    width: 50%;
+    transform-origin: top right;
+    animation: slideInRight 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    /* 🔑 Ensure the initial state of the clip-path is the default rectangle (no cut) */
+    /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%);
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%) skewX(10deg);
+    }
+    100% {
+        /* transform: translateX(0%); */
+        transform: translateX(0%) skewX(0deg);
+        /* 🔑 KEY CHANGE: Apply a clip-path to cut the right edge at 45 degrees. 
+           (x1 y1, x2 y2, x3 y3, x4 y4) */
+        clip-path: polygon(0% 0%, 50% 0%, 100% 100%, 0% 100%);
+        /* Note: The browser will try to transition this, which might look jagged. 
+           We'll improve this with an overlay below. */
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        /* transform: translateX(100%); */
+        transform: translateX(100%) skewX(-10deg);
+    }
+    100% {
+        transform: translateX(0%) skewX(0deg);
+        /* 🔑 KEY CHANGE: Apply a clip-path to cut the left edge at 45 degrees. */
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%);
+    }
+}
+
+
+
+
+
+
+/* Animation on page load (or when hero-section becomes visible) */
+.hero-section:not(.animated) .hero-bg-left {
+    transform: translateX(0) skewX(0); /* Final position for left image */
+}
+.hero-section:not(.animated) .hero-bg-right {
+    transform: translateX(0) skewX(0); /* Final position for right image */
+}
+
+/* This is the state AFTER animation.
+   The browser will animate from the initial `transform` (defined above)
+   to these `transform` values.
+*/
+.hero-section:hover .hero-bg-left { /* Just for demonstration, hover to see final state */
+    transform: translateX(0%) skewX(0deg);
+}
+.hero-section:hover .hero-bg-right { /* Just for demonstration, hover to see final state */
+    transform: translateX(0%) skewX(0deg);
+}
+
+
+
+
+/* Responsive adjustments for the hero section */
+@media (max-width: 768px) {
+    /* 🔑 FIX: Make the images span 100% width on mobile, and disable the diagonal cut */
+    .hero-bg-left, .hero-bg-right {
+        width: 100%;
+        clip-path: none; /* Remove the clip path on mobile */
+    }
+    
+    .hero-bg-right {
+        /* Since they stack, the right image should move down */
+        top: 50%;
+        height: 50%;
+    }
+    .hero-bg-left {
+        height: 50%;
+    }
+    /* You may need to adjust the content placement and height further on mobile */
+}
+
+
+/* Also ensure the final clip-path is applied to the overlay */
+.hero-bg-left::before {
+    clip-path: polygon(0% 0%, 50% 0%, 100% 100%, 0% 100%);
+}
+.hero-bg-right::before {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%);
+}
+
+
+/* --- About Us Specific --- */
+
+.about-us-section h1 {
+    /* Set the bottom margin to exactly what you want (e.g., 20px) */
+    margin-bottom: 0; 
+    /* Crucially, remove the default top margin */
+    margin-top: 0; 
+}
+
+.about-content {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-text, .about-image {
+    flex: 1;
+}
+
+/* --- FIX APPLIED HERE --- */
+.about-image {
+    flex: 1;
+    /* ADDED: Explicitly setting background to ensure no checkered pattern shows */
+    background-color: var(--text-light); 
+}
+/* ------------------------ */
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* --- Contact Us Specific --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.contact-card-contact {
+    border: 1px solid var(--tertiary-color);
+    padding: 30px;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+}
+
+.contact-card-expertise {
+    border: 1px solid var(--tertiary-color);
+    padding: 20px;
+    border-radius: 7px;
+    transition: box-shadow 0.3s ease;
+    /* ADDED: Set default text color to tertiary for cards on light backgrounds */
+    color: var(--text-dark); /* Use dark text color for better contrast */
+    /* UPDATED: Forcing a consistent height for all cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+.contact-card {
+    border: 1px solid var(--tertiary-color);
+    padding: 30px;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+    /* ADDED: Set default text color to tertiary for cards on light backgrounds */
+    color: var(--text-dark); /* Use dark text color for better contrast */
+    /* UPDATED: Forcing a consistent height for all cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150px; /* Fixed height for uniformity */
+}
+
+.contact-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.bg-primary .contact-card {
+    /* The white background is set inline in index.html, so we only need to adjust text */
+    color: var(--tertiary-color); 
+}
+
+.partner-logo {
+    max-height: 100%; /* Allows the logo to fill the height of the card (minus padding) */
+    max-width: 100%; /* Ensures the logo never exceeds the card width */
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    /* KEY CHANGE: Scales the image down to fit the bounds, maintaining aspect ratio */
+    object-fit: contain;
+}
+
+.bg-primary .contact-card p {
+    color: var(--secondary-color); /* Setting the paragraph text to secondary color for readability */
+}
+
+.department-grid {
+    display: flex;
+    /* display: grid; */
+    border: 1px;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-radius: 7px;
+    gap: 20px;
+    margin-top: 30px;
+    font-size: 1.1em;
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+    color: var(--text-dark);
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+.core-value-item {
+    display: grid;
+    /* Defines the two columns: 1 unit (1fr) for the image, 2 units (2fr) for the text */
+    grid-template-columns: 1fr 2fr;
+    gap: 40px; /* Space between the image and the text column */
+    margin-bottom: 60px; /* Space between the different core values */
+    align-items: start; /* Ensures content aligns to the top of the row */
+    font-size: 1.2em; /* Applying the font-size from your original ul style */
+    text-align: justify; /* Applying the text-align from your original ul style */
+  }
+
+  .value-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    /* Optional: Add a subtle border or shadow here if you like */
+  }
+
+  /* Style for the heading within the text column */
+  .text-column h3 {
+    margin-top: 0; /* Remove default top margin for clean alignment */
+    /* Add any specific styling for your titles here */
+  }
+
+  /* --- NEW CSS FOR REVERSING COLUMNS --- */
+  .reverse-columns {
+    /* Uses the 'flow' property in CSS Grid to reverse the visual order of items */
+    direction: rtl; /* Reads columns from Right-to-Left */
+  }
+
+  /* We must reset the text direction inside the reversed item to keep text readable */
+  .reverse-columns .text-column,
+  .reverse-columns .image-column {
+    direction: ltr; /* Resets text back to Left-to-Right */
+  }
+
+  /* Optional: Responsive adjustment for smaller screens (e.g., mobile) */
+  @media (max-width: 768px) {
+    .core-value-item {
+      /* Stack the image and text vertically on mobile */
+      grid-template-columns: 1fr;
+    }
+    .image-column {
+      /* Center the image when stacked */
+      text-align: center;
+    }
+  }
+
+.department-card {
+    border: 1px solid var(--tertiary-color);
+    padding: 30px;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+    /* ADDED: Set default text color to tertiary for cards on light backgrounds */
+    color: var(--text-dark); /* Use dark text color for better contrast */
+    /* UPDATED: Forcing a consistent height for all cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    width: 350px;
+}
+
+.expertise-grid {
+    display: grid;
+    /* display: grid; */
+    /* border: 1px solid var(--tertiary-color); */
+    grid-template-columns: 1fr 2fr;
+    border-radius: 7px;
+    gap: 20px;
+    margin-top: 30px;
+    font-size: 1.1em;
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+    color: var(--text-light);
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+
+.brand-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 30px;
+    font-size: 1.1em;
+}
+
+.brand-grid .contact-card:nth-child(4) {
+    /* Sets the item to start at column line 2 (the middle column) */
+    grid-column-start: 2; 
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 900px) {
+    /* Slightly reduce the hero heading size on mid-size screens */
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Header & Navigation */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 55px; /* Adjusted to fit the new header size */
+        left: 0;
+        background-color: var(--primary-color);
+        z-index: 10;
+        padding: 10px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 20px;
+        text-align: center;
+    }
+
+    .nav-links a {
+        color: var(--text-light);
+    }
+    .nav-links a.active {
+        border-bottom: 3px solid var(--accent-color);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Top Bar */
+    .top-bar .contact-info {
+        flex-direction: column;
+        align-items: center;
+    }
+    .top-bar .contact-info span {
+        margin-left: 0 !important;
+        margin-bottom: 5px;
+    }
+
+    /* Hero Section */
+    .hero-section {
+        padding: 60px 0;
+    }
+    .hero-section h1 {
+        font-size: 2em; /* Smaller font for small mobile screens */
+    }
+    .hero-section p {
+        font-size: 1em;
+    }
+
+    /* Main Content Sections */
+    .about-content {
+        flex-direction: column;
+    }
+
+    /* Contact & Department Grids */
+    .contact-grid,
+    .department-grid,
+    .footer-content { /* Also make footer stack */
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-card {
+        margin-bottom: 10px;
+    }
+}
+
