@@ -1,5 +1,4 @@
 /* style.css */
-
 /* --- Color Variables --- */
 :root {
     --primary-color: #062b4b;
@@ -8,7 +7,7 @@
     --text-dark: #1b1b1b;
     --text-light: #ffffff;
     --accent-color: #8b2c2c;
-    /* Define the size of the margin *around* the dot for precise centering */
+    /* Define the size of the margin around the dot for precise centering - home page, text over photos */
     --dot-spacing: 20px;
 }
 
@@ -20,19 +19,11 @@
 }
 
 body {
-    /* 🔑 ADD: Apply Rubik as the primary font with a sans-serif fallback */
     font-family: 'Rubik', sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--text-light);
 }
-
-/* body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    line-height: 1.6;
-    color: var(--text-dark);
-    background-color: var(--text-light);
-} */
 
 h1, h2, h3, h4 {
     color: var(--primary-color);
@@ -70,6 +61,7 @@ a:hover {
     color: var(--text-light) !important;
     border-radius: 5px;
     font-weight: 600;
+    font-size: 1.5em;
     transition: background-color 0.3s ease;
 }
 
@@ -160,7 +152,7 @@ header {
     /* Styles for the text (optional) */
     font-family: 'Rubik', sans-serif;
     align-items: center;
-    font-size: 1.5em;
+    /* font-size: 1.5em; */
     font-weight: bold;
     color: var(--text-light);
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Add shadow for readability */
@@ -175,7 +167,7 @@ header {
     font-size: 1.5em; /* Makes the circle bigger */
     /* Ensure the separator stays on the same line */
     /* Color of the separator (optional) */
-    color: var(--tertiary-color);
+    color: var(--accent-color);
 }
 
 /* Mobile menu setup */
@@ -280,45 +272,41 @@ section {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Add shadow for readability */
 }
 
+.hero-section .inline-list {
+    font-size: 3em;
+    margin-bottom: 230px;
+    margin-top: 0px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Add shadow for readability */
+}
+
 /* Styles for the moving background images */
 .hero-bg-left,
 .hero-bg-right {
     position: absolute;
     top: 0;
-    /* width: 100%; */
     height: 100%;
     background-size: cover;
-    /* background-position: center; */
     z-index: 1; /* Place them behind the text */
-    /* Smooth animation */
-    /* transition: transform 1.5s ease-out;  */
 }
 
 .hero-bg-left {
     background-image: url('figures/container-ship.png');
     background-position: right center;
     left: 0;
-    /* 🔑 KEY CHANGE: Image should only occupy 50% of the section width */
-    width: 50%;
+    width: 52.5%;
     transform-origin: bottom left;
     animation: slideInLeft 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    /* 🔑 Ensure the initial state of the clip-path is the default rectangle (no cut) */
-    /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); */
-    clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 0% 100%);
-    /* clip-path: polygon(0% 0%, 50% 0%, 100% 100%, 0% 100%); */
+    clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 0% 100%); /*esse*/
 }
 
 .hero-bg-right {
     background-image: url('figures/executive-meeting.png');
     background-position: left center;
     right: 0;
-    /* 🔑 KEY CHANGE: Image should only occupy 50% of the section width */
-    width: 50%;
+    width: 52.5%;
     transform-origin: top right;
     animation: slideInRight 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    /* 🔑 Ensure the initial state of the clip-path is the default rectangle (no cut) */
-    /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); */
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 10% 100%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 10% 100%); /*esse*/
 }
 
 @keyframes slideInLeft {
@@ -326,58 +314,27 @@ section {
         transform: translateX(-100%) skewX(10deg);
     }
     100% {
-        /* transform: translateX(0%); */
         transform: translateX(0%) skewX(0deg);
-        /* 🔑 KEY CHANGE: Apply a clip-path to cut the right edge at 45 degrees. 
-           (x1 y1, x2 y2, x3 y3, x4 y4) */
         clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 0% 100%);
-        /* Note: The browser will try to transition this, which might look jagged. 
-           We'll improve this with an overlay below. */
     }
 }
 
 @keyframes slideInRight {
     0% {
-        /* transform: translateX(100%); */
         transform: translateX(100%) skewX(-10deg);
     }
     100% {
         transform: translateX(0%) skewX(0deg);
-        /* 🔑 KEY CHANGE: Apply a clip-path to cut the left edge at 45 degrees. */
         clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 10% 100%);
     }
 }
 
-
-
-/* Animation on page load (or when hero-section becomes visible) */
-.hero-section:not(.animated) .hero-bg-left {
-    transform: translateX(0) skewX(0deg); /* Final position for left image */
-}
-.hero-section:not(.animated) .hero-bg-right {
-    transform: translateX(0) skewX(0deg); /* Final position for right image */
-}
-
-/* This is the state AFTER animation.
-   The browser will animate from the initial `transform` (defined above)
-   to these `transform` values.
-*/
-.hero-section:hover .hero-bg-left { /* Just for demonstration, hover to see final state */
-    transform: translateX(0%) skewX(0deg);
-}
-.hero-section:hover .hero-bg-right { /* Just for demonstration, hover to see final state */
-    transform: translateX(0%) skewX(0deg);
-}
-
-
 /* Responsive adjustments for the hero section */
 @media (max-width: 768px) {
-    /* 🔑 FIX: Make the images span 100% width on mobile, and disable the diagonal cut */
     .hero-bg-left, .hero-bg-right {
         width: 100%;
         clip-path: none; /* Remove the clip path on mobile */
-    }
-    
+    }    
     .hero-bg-right {
         /* Since they stack, the right image should move down */
         top: 50%;
@@ -386,16 +343,15 @@ section {
     .hero-bg-left {
         height: 50%;
     }
-    /* You may need to adjust the content placement and height further on mobile */
 }
 
 
 /* Also ensure the final clip-path is applied to the overlay */
 .hero-bg-left::before {
-    clip-path: polygon(0% 0%, 50% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(0% 0%, 99% 0%, 100% 100%, 0% 100%);  /*esse*/
 }
 .hero-bg-right::before {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 1% 100%); /*esse*/
 }
 
 
@@ -418,13 +374,10 @@ section {
     flex: 1;
 }
 
-/* --- FIX APPLIED HERE --- */
 .about-image {
     flex: 1;
-    /* ADDED: Explicitly setting background to ensure no checkered pattern shows */
     background-color: var(--text-light); 
 }
-/* ------------------------ */
 
 .about-image img {
     width: 100%;
@@ -541,7 +494,6 @@ section {
     /* Add any specific styling for your titles here */
   }
 
-  /* --- NEW CSS FOR REVERSING COLUMNS --- */
   .reverse-columns {
     /* Uses the 'flow' property in CSS Grid to reverse the visual order of items */
     direction: rtl; /* Reads columns from Right-to-Left */
@@ -601,10 +553,16 @@ section {
 
 .brand-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(1, 100px);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-top: 30px;
     font-size: 1.1em;
+}
+
+.contact-card{
+    grid-column: 2 / 3;
+    place-self: center;
 }
 
 .brand-grid .contact-card:nth-child(4) {
@@ -692,3 +650,107 @@ section {
     }
 }
 
+/* --- Core Values Section Styling --- */
+.highlights-aboutus {
+    padding: 60px 20px;
+    background-color: #f8f8f8; /* Light background for contrast */
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.header-highlights {
+    max-width: 900px;
+    margin: 0 auto 40px;
+}
+
+.header-highlights h2 {
+    font-size: 2.2em;
+    color: #0a2342; /* A strong, professional navy/dark blue */
+    margin-bottom: 15px;
+}
+
+.header-highlights p {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* --- Boxes Layout --- */
+.highlights-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Space between boxes */
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+/* --- Individual Box Styling --- */
+.highlights-box {
+    flex: 1;
+    min-width: 280px; /* Ensures boxes don't get too small */
+    max-width: 350px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    text-align: left;
+    
+    /* Initial state for Fade-In Animation */
+    opacity: 0;
+    transform: translateY(20px);
+    
+    /* Shadow and Hover Transition Setup */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Small, subtle shadow */
+    transition: all 0.5s ease-in-out; /* Smooth transition for hover effects */
+    
+    /* Ensure nothing is clickable */
+    pointer-events: auto; 
+    cursor: default; 
+}
+
+.highlights-box p {
+    font-size: 1.2em;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* --- HOVER EFFECT --- */
+.highlights-box:hover {
+    transform: translateY(-5px); /* Subtle lift effect */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Shadow increases */
+    background-color: #f9f9ff; /* Very subtle background color change */
+}
+
+
+/* --- FADE-IN ANIMATION --- */
+/* Defines the keyframe animation */
+@keyframes fadeInSlide {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Applies the animation to all boxes */
+.highlights-box {
+    /* Base animation setup (3.5s duration, forwards keeps the final state) */
+    animation: fadeInSlide 0.8s forwards; 
+}
+
+/* Staggers the animation using the data-delay attribute */
+.highlights-box[data-delay="0s"] { animation-delay: 0s; }
+.highlights-box[data-delay="0.3s"] { animation-delay: 0.3s; } /* 300ms interval */
+.highlights-box[data-delay="0.6s"] { animation-delay: 0.6s; } /* 300ms interval */
+
+/* Optional: Media query for better layout on small screens */
+@media (max-width: 768px) {
+    .highlights-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .highlights-box {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+}
