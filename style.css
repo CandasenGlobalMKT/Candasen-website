@@ -1,15 +1,5 @@
 /* style.css */
 /* --- Color Variables --- */
-:root {
-    --primary-color: #062b4b;
-    --secondary-color: #4e6e8e;
-    --tertiary-color: #a0a5aa;
-    --text-dark: #1b1b1b;
-    --text-light: #ffffff;
-    --accent-color: #8b2c2c;
-    /* Define the size of the margin around the dot for precise centering - home page, text over photos */
-    --dot-spacing: 20px;
-}
 
 /* --- Base & Typography --- */
 * {
